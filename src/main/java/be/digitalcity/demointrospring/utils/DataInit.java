@@ -61,3 +61,4 @@ public class DataInit implements InitializingBean {
         this.players.forEach(playerService::insert);
     }
 }
+

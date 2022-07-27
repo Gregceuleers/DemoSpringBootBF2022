@@ -7,6 +7,7 @@ import be.digitalcity.demointrospring.repositories.PlayerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,7 +34,9 @@ public class PlayerService implements IService<Player, PlayerDTO, Long> {
 
     @Override
     public PlayerDTO getById(Long id) {
-        return null;
+
+        Optional<Player> result = this.playerRepository.findById(id);
+        return result.map(this.mapper::toPlayerDto).orElse(null);
     }
 
     @Override
